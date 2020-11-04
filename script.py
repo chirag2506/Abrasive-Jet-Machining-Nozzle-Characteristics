@@ -1,4 +1,5 @@
 import csv
+import numpy as np
 
 with open("exitDiameter.data","r") as csvfile:
         lines = csv.reader(csvfile)
@@ -20,4 +21,8 @@ with open("weightLoss.data","r") as csvfile:
                 wLoss_dataset[x][y] = float(wLoss_dataset[x][y])
 
 #print(wLoss_dataset)
+
+#Theta = (X T .X) -1 .X T .Y
+
+
 
