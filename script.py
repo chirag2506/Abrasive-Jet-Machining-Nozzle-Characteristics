@@ -1,23 +1,72 @@
 import csv
+import numpy as np
 
 with open("exitDiameter.data","r") as csvfile:
+
+                # Nozzle length^2 + nozzle length
+                # Nozzle diameter^2 + nozzle dia
+                # 1/inlet angle
+                # sin(orfice dia)
+                # (waterpre^2/1000) + water press
+                # abrasiveflow^3 + af^2 + af
+
         lines = csv.reader(csvfile)
         exitDia_dataset = list(lines)
 
-        for x in range(len(exitDia_dataset)- 1):    # iterate each row of dataset
-            for y in range(8):              #iterate fielement of xth row
+        for x in range(len(exitDia_dataset)):    # iterate each row of dataset
+            for y in range(13):              #iterate fielement of xth row
                 exitDia_dataset[x][y] = float(exitDia_dataset[x][y])
 
-#print(exitDia_dataset)
-#print("################################################################################################################")
+# print(exitDia_dataset)
+# print("################################################################################################################")
 
 with open("weightLoss.data","r") as csvfile:
+
+                # Nozzle length^2 + nozz len
+                # Nozzle diameter
+                # inlet angle
+                # orfice dia ^2 + od
+                # (waterpre^3/1000000) + (waterpre^2/1000) + water press
+                # abrasiveflow^3 + af^2 + af
+
         lines = csv.reader(csvfile)
         wLoss_dataset = list(lines)
 
-        for x in range(len(wLoss_dataset)- 1):    # iterate each row of dataset
-            for y in range(8):              #iterate fielement of xth row
+        for x in range(len(wLoss_dataset)):    # iterate each row of dataset
+            for y in range(14):              #iterate fielement of xth row
                 wLoss_dataset[x][y] = float(wLoss_dataset[x][y])
 
-#print(wLoss_dataset)
+# print(wLoss_dataset)
 
+#Theta = (X T .X) -1 .X T .Y
+
+exitDia_dataset = np.array(exitDia_dataset)
+wLoss_dataset = np.array(wLoss_dataset)
+
+exitDia_dataset_features = exitDia_dataset[:,[0,1,2,3,4,5,6,7,8,9,10,11]]
+wLoss_dataset_features = wLoss_dataset[:,[0,1,2,3,4,5,6,7,8,9,10,11,12]]
+# print(exitDia_dataset_features)
+# print(wLoss_dataset_features)
+
+exitDia_dataset_result = exitDia_dataset[:,[12]]
+wLoss_dataset_result = wLoss_dataset[:,[13]]
+# print(exitDia_dataset_result)
+# print(wLoss_dataset_result)
+
+def cost(x,y):
+    x_transpose = x.transpose()
+
+    xTx = np.matmul(x_transpose, x)
+    xTxInverse = np.linalg.inv(xTx)
+
+    xTxInvxT = np.matmul(xTxInverse, x_transpose)
+
+    cost_matrix = np.matmul(xTxInvxT, y)
+
+    return cost_matrix
+
+exitDia_cost = cost(exitDia_dataset_features, exitDia_dataset_result)
+print(exitDia_cost)
+
+wLoss_cost = cost(wLoss_dataset_features, wLoss_dataset_result)
+print(wLoss_cost)
