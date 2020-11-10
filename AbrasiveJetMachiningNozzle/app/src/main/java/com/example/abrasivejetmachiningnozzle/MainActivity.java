@@ -82,14 +82,14 @@ public class MainActivity extends AppCompatActivity {
             String iAInput = inletAngle.getText().toString().trim();
             String oDInput = orficeDiamter.getText().toString().trim();
             String wPInput = waterPressure.getText().toString().trim();
-            String fLInput = flowRate.getText().toString().trim();
+            String fRInput = flowRate.getText().toString().trim();
 
             ok.setEnabled(!nLInput.isEmpty()
                     && !nDInput.isEmpty()
                     && !iAInput.isEmpty()
                     && !oDInput.isEmpty()
                     && !wPInput.isEmpty()
-                    && !fLInput.isEmpty());
+                    && !fRInput.isEmpty());
 
         }
 

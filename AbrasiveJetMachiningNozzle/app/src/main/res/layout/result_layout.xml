@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFF00"
+    android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Exit Diameter Increase Rate:"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="24dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:gravity="center"
+        />
 
     <TextView
         android:id="@+id/diaIncRate"
@@ -9,27 +28,22 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:background="@drawable/edittext_layout"
+        android:textSize="17sp"
 
         android:layout_marginStart="24dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
         android:paddingBottom="5dp"
         android:paddingTop="5dp"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"/>
 
-    <TextView
-        android:id="@+id/weightLoss"
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:background="@drawable/edittext_layout"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        />
+        android:src="@drawable/ajm"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
+        android:contentDescription="ajm pic"/>
+
 </LinearLayout>
